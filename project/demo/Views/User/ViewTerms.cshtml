@@ -1,0 +1,144 @@
+﻿@* @model IEnumerable<demo.Models.Terms>
+
+@{
+    ViewData["Title"] = "ViewTerms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    <h6 class="m-0 font-weight-bold text-primary"> <a class="nav-link" href="/Terms">Add Terms</a></h6>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Term)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Term)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TermId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TermId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TermId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+@model IEnumerable<demo.Models.Terms>
+
+@{
+    ViewData["Title"] = "ViewTerms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            font-family: Raleway;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+
+                    <!-- Page Heading -->
+                    <h1 align="center" class="h3 mb-2 text-gray-800">Term Details</h1>
+                    @* <p class="mb-4">
+                        DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                                                                                   href="https://datatables.net">official DataTables documentation</a>.
+                    </p> *@
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"> <a class="nav-link" href="/Terms">Add Terms</a></h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        @* <tr><a id="add" asp-action="Create" class="button">Create New</a></tr> *@
+                                        <tr>
+                                            <th>
+                                              Term
+                                            </th>
+                                            <th>
+                                               Description
+                                            </th>
+                                            <th>Amount</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         @foreach (var item in Model) {
+                                        <tr>
+                                            <td>
+                                                @item.Term
+                                            </td>
+                                            <td>
+                                             @item.Description
+                                            </td>
+                            <td>
+                                @item.amount
+                            </td>
+                            <td>
+                               @*  @Html.ActionLink("Edit","Index", "EditTerms", new {  id=item.TermId })  *@
+                              @*   <a asp-page="/Terms" asp-route-id="@item.TermId">Edit</a> | *@
+                           @*   <a href="/Terms/@item.TermId" class="btn btn-sm btn-primary">Edit</a> *@
+                                <a asp-controller="EditTerms" asp-action="Index" asp-route-id="@item.TermId" class="btn btn-sm btn-primary edit-link">Edit</a>
+
+                                <a asp-controller="Terms" asp-action="Delete" asp-route-id="@item.TermId" class="btn btn-sm btn-danger edit-link">Delete</a>
+
+                            </td>
+
+                                                      
+                                                        @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
+                                                   @*@Html.ActionLink("Delete", "viewuser","User", new { onclick = "return confirm('Are you sure you want to delete this user?');" }) *@
+                                   @*  @Html.ActionLink("Delete", "Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are you sure you want to delete this user?');" }) *@
+
+                                        
+                                    </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+   @*                  <script>
+    $(document).ready(function () {
+        $('.edit-link').on('click', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            var termId = $(this).data('termid'); // Get the TermId from data attribute
+
+            // Load the ViewTerms page with the specific TermId
+            window.location.href = '/EditTerms/Get?id=' + termId;
+        });
+    });
+
+</script> *@

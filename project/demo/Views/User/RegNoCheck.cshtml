@@ -1,0 +1,165 @@
+﻿@model demo.Models.ForegetPassword
+
+@* @{
+    ViewData["Title"] = "Reset Password";
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-4">
+        @if(Model?.EmailSent==true)
+        {
+            <div class="alert alert-success" role="alert">
+                <p>We have sent an email to registered email id</p>
+            </div>
+        }
+        else
+        {
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-wrapper">
+                    <label for="">Reg No</label>
+                    <input asp-for="RegNo" class="form-control" id="RegNo" name="RegNo" type="text" required />
+                </div>
+                <div class="form-wrapper">
+                    <label for="">Email</label>
+                    <input asp-for="email" class="form-control" id="email" name="email" type="email" required />
+                </div>
+
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Reset Password</button>
+            </form>
+        }
+
+    </div>
+</div>
+ *@
+
+
+
+
+
+
+
+
+@{
+	ViewData["Title"] = "Reset Password";
+	Layout = null;
+
+}
+
+<html>
+<head>
+	<title>Reset Password</title>
+	<link rel="stylesheet" href="css/style.css?v4">
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="/js/register.js?v4"></script>
+	<script src="public/script.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="/Login_v16/table/css/style.css">
+
+	<link rel="stylesheet" href="/css/style.css?v4">
+
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			padding-top: 250px;
+		}
+
+		.topnav {
+			overflow: hidden;
+			background: linear-gradient(to right, #37f67f, #12d34c) !important;
+		}
+
+			.topnav a {
+				float: right;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 20px 20px;
+				text-decoration: none;
+				font-size: 20px;
+			}
+
+				.topnav a:hover {
+					background-color: #ddd;
+					color: green;
+				}
+
+		.button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 5px 5px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 1px 1px;
+			cursor: pointer;
+		}
+
+		.form-control {
+			width: 500px;
+		}
+
+		.form-wrapper {
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+
+		.form-inputs {
+			display: inline-block; /* Ensures form elements are on the same line */
+		}
+
+			.form-inputs .form-wrapper {
+				display: block; /* Sets each form input as a block for vertical alignment */
+			}
+
+		.center-button {
+			text-align: center; /* Aligns the button to the center */
+			width: 100%; /* Forces the container to take full width */
+		}
+
+			.center-button button {
+				display: inline-block; /* Makes the button inline-block to center it */
+			}
+
+	</style>
+
+
+</head>
+<body style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg');">
+	@if (TempData["message"] != null)
+	{
+		<script>alert('@TempData["message"]');</script>
+	}
+	<form asp-controller="RegNo" asp-action="PostRegNo" align="center">
+		<div class="form-inputs">
+			<div class="form-wrapper">
+
+				@* 	<input type="hidden" id="ID" name="Id" value="@Model.Id" /> *@
+			</div>
+			<div class="form-inputs">
+				<div class="form-wrapper" align="left">
+					<label style="font-size: 20px;color:black;" for="">Reg No</label>
+					<input asp-for="RegNo" class="form-control" id="RegNo" name="RegNo" type="text" required />
+				</div>
+				<div class="form-wrapper" align="left">
+					<label style="font-size: 20px;color:black;" for="">Email</label>
+					<input asp-for="email" class="form-control" id="email" name="email" type="email" required />
+				</div>
+				<div class="center-button">
+					<button type="submit">Reset</button>
+				</div>
+			</div>
+	</form>
+	<script src="/Login_v16/table/js/jquery.min.js"></script>
+	<script src="/Login_v16/table/js/popper.js"></script>
+	<script src="/Login_v16/table/js/bootstrap.min.js"></script>
+	<script src="/Login_v16/table/js/main.js"></script>
+
+</body>
+</html>

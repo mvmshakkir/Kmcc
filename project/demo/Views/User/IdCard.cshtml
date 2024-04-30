@@ -1,0 +1,292 @@
+﻿@model demo.Areas.Identity.Data.demoUser
+
+@*   @model Tuple<demo.Areas.Identity.Data.demoUser, byte[]>  *@
+
+@{
+    Layout = null;
+}
+
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <style>
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        @@media print {
+            table {
+                page-break-inside: avoid;
+            }
+
+            .background-image {
+                background-image: url('/Login_v16/images/FRONT1.jpg');
+                background-size: cover;
+                width: 380px;
+                height: 230px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .background-image1 {
+                background-image: url('/Login_v16/images/BACK1.jpg');
+                background-size: cover;
+                width: 380px;
+                height: 230px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .aligned-left {
+                margin-left: -388px;
+                margin-top: 100px;
+            }
+
+            .aligned-reight {
+                margin-left: -507px;
+                margin-top: -135px;
+            }
+
+
+            .aligned-left.reduce-space tr {
+                margin-bottom: 5px; /* Adjust the margin-bottom to reduce space between rows */
+            }
+        }
+
+        body {
+            background-color: #f3f3f3;
+        }
+
+        @@media print {
+            body {
+                /* Scale the content to 58% for printing */
+                transform: scale(0.58);
+                transform-origin: top left; /* Set the origin of the scaling */
+            }
+            .background-image {
+                /* Add styles for the background image in print */
+                background-image: url('/Login_v16/images/image.jpg');
+                /* Other necessary styles */
+            }
+
+         
+    .card {
+        width: 380px; /* Adjust the width for printing */
+        height: 230px; /* Adjust the height for printing */
+        background-image: url('/Login_v16/images/WEB_page-0001.jpg');
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+        .background-image {
+            background-image: url('/Login_v16/images/FRONT1.jpg');
+            background-size: cover;
+            width: 380px;
+            height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-image1 {
+            background-image: url('/Login_v16/images/BACK1.jpg');
+            background-size: cover;
+            width: 380px;
+            height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aligned-left {
+            margin-left: -388px;
+            margin-top: 100px;
+        }
+
+        .aligned-reight {
+            margin-left: -473px;
+            margin-top: -135px;
+        }
+
+
+        .aligned-left.reduce-space tr {
+            margin-bottom: 5px; /* Adjust the margin-bottom to reduce space between rows */
+        }
+
+        }
+
+        @@media only screen and (max-width: 600px) {
+            /* Your mobile view styles */
+            /* Make images responsive */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+      /*   .qr-code {
+            width: 100px;
+            height: 100px;
+            padding-left: 258px;
+            padding-top: 60px;
+        }*/
+        aligned-left h4,
+        .aligned-reight h4 {
+            margin: 0;
+            padding-bottom: 10px;
+            padding-left: 35px ;/* Add padding-bottom to all <h4> tags within .aligned-left and .aligned-reight */
+        } 
+        .card {
+            width: 380px;
+            height: 230px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            z-index: 1;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            margin-bottom: -12px; /* Adjust this value to reduce the space */
+        }
+    </style>
+
+</head>
+
+<div id="printableArea" align="center">
+    <div class="container">
+       
+    <div class="card" style="background-image: url('/Login_v16/images/WEB_page-0001.jpg'); background-size: cover; height: 347px; width: 578px; display: flex; justify-content: center; align-items: center;">
+    @* <img src="/Login_v16/images/image.jpg" alt="user" height="300" width="800"> *@
+           @*  <table align="right">
+                <tr>
+                    <td>
+                        <img src="/qrcodes/@ViewBag.QRCodeImagePath" alt="QR Code" height="100" width="100" style="padding-left:258px;padding-top:60px;" />
+                    </td>
+                </tr>
+            </table> *@
+            <table class="aligned-left" style="margin-left: -120px; margin-top: 102px; table-layout: fixed; width: 400px;">
+                <colgroup>
+                    <col style="width: 150px;">
+                    <col style="width: 250px;">
+                </colgroup>
+                <tr>
+                    <td rowspan="4" style="min-width: 150px; padding-right: 20px; vertical-align: top; text-align: center;">
+                        <!-- User image -->
+                        <img src="/uploads/@Model.UserImage" alt="user" height="150" width="150" style="padding-top: -9px; padding-left: 0;">
+                        <!-- Registration ID -->
+                        <h3 style="margin-top: 5px; padding-left: 60px; text-align: left; color: red;">@Model.RegistrationId</h3>
+                    </td>
+                    <td style="vertical-align: top;">
+                        <!-- Name -->
+                        <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 10px 0 0 0; padding-left: 10px;">@Model.FirstName @Model.LastName</h4>
+                        <!-- Ward -->
+                        <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 5px 0 0 0; padding-left: 10px;">@Model.Ward</h4>
+                        <!-- Mobile -->
+                        <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 5px 0 0 0; padding-left: 10px;">@Model.AbroadPhone</h4>
+                        <!-- Country -->
+                        <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 5px 0 20px 0; padding-left: 10px;">@Model.Country</h4>
+                    </td>
+                </tr>
+                <!-- QR Code -->
+                <tr>
+                    <td style="text-align: right;">
+                        <img src="/qrcodes/@ViewBag.QRCodeImagePath" alt="QR Code" class="qr-code" height="100" width="100" style="margin-top: -187px; margin-right: -122px;">
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @* <img src="/qrcodes/@ViewBag.QRCodeImagePath" alt="QR Code" class="qr-code" /> *@
+            @* <img src="/qrcodes/@ViewBag.QRCodeImagePath" alt="QR Code" class="qr-code" hight="100" width="100" style="padding-right: 35px;" /> *@
+        </div>
+       
+    </div>
+    <div class="card" style="background-image: url('/Login_v16/images/BACK1.jpg');
+    background-size: cover;
+  height: 347px; width: 578px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;">
+        <table class="aligned-reight" style="margin-left: 25px; margin-top: 71px; width: 800px;">
+            @foreach (var familyMember in Model.family)
+            {
+                <tr style="display: flex; align-items: flex-start; width: 89%;">
+                    <td style="flex: 2;">
+                        <h4 style="margin: 0;">@familyMember.Name.ToUpper()</h4>
+                    </td>
+                    <td style="flex: 1;">
+                        <h4 style="margin: 0;">@familyMember.Age</h4>
+                    </td>
+                    <td style="flex: 1;">
+                        <h4 style="margin: 0;">@familyMember.Relation.ToUpper()</h4>
+                    </td>
+                </tr>
+            }
+        </table>
+       
+    </div>
+
+
+
+
+
+
+   
+
+
+
+
+
+
+</div>
+<div align="center">
+    
+    @* <img src="/qrcodes/@ViewBag.QRCodeImagePath" alt="QR Code" height="150" width="150"> *@
+    <input type="button" class="btn btn-sm btn-primary edit-link" onclick="printDiv('printableArea')" style="font-size: 25px; padding: 20px 20px;background-color: #47dc47; color: white; border-radius: 10px;" value="print " />
+</div>
+<script>
+    function printDiv(divId) {
+        var printContents = document.getElementById(divId).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+

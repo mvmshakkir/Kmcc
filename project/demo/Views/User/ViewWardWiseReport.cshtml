@@ -1,0 +1,138 @@
+﻿@* 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ward Wise Report</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Ward Wise Report</h1>
+    
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <!-- Add additional columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in ViewBag.ward)
+                {
+                    <tr>
+                        
+                    <td>@user.FirstName</td>
+                        <td>@user.Email</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+  
+</body>
+</html>
+ *@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            font-family: Raleway;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+</head>
+
+<!-- Page Heading -->
+<h1 align="center" class="h3 mb-2 text-gray-800">Ward Details</h1>
+@* <p class="mb-4">
+                        DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                                                                                   href="https://datatables.net">official DataTables documentation</a>.
+                    </p> *@
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @* <h6 class="m-0 font-weight-bold text-primary"> <a class="nav-link" href="/Ward">Add Ward</a></h6> *@
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    @* <tr><a id="add" asp-action="Create" class="button">Create New</a></tr> *@
+                    <tr>
+                        <th>RegId</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Ward</th>
+                        <th>City</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.UsersWithPayment != null)
+                    {
+                        foreach (var user in ViewBag.UsersWithPayment)
+                        {
+                            <tr>
+                                <td>@user.RegistrationId</td>
+                                <td>@(user.FirstName + " " + user.LastName)</td>
+                                <td>@user.Address</td>
+                                <td>@user.Ward</td>
+                                <td>@user.City</td>
+                                <td>@user.Phone</td>
+                                <td>@user.Email</td>
+                            </tr>
+                        }
+                    }
+                    else if (ViewBag.UsersWithoutPayment != null)
+                    {
+                        foreach (var user in ViewBag.UsersWithoutPayment)
+                        {
+                            <tr>
+                                <td>@user.RegistrationId</td>
+                                <td>@(user.FirstName + " " + user.LastName)</td>
+                                <td>@user.Address</td>
+                                <td>@user.Ward</td>
+                                <td>@user.City</td>
+                                <td>@user.Phone</td>
+                                <td>@user.Email</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7">No users found</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</html>

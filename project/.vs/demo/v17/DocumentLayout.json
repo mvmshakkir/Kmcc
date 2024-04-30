@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\kmccproject\\project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\controllers\\verficationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\controllers\\verficationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\views\\user\\viewuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\views\\user\\viewuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\views\\user\\userlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\views\\user\\userlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\wwwroot\\bootstrap\\css\\bootstrap-grid.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\wwwroot\\bootstrap\\css\\bootstrap-grid.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\wwwroot\\login_v16\\dashboard\\vendor\\fontawesome-free\\js\\all.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\wwwroot\\login_v16\\dashboard\\vendor\\fontawesome-free\\js\\all.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\wwwroot\\login_v16\\dashboard\\vendor\\fontawesome-free\\js\\all.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\wwwroot\\login_v16\\dashboard\\vendor\\fontawesome-free\\js\\all.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|e:\\kmccproject\\project\\demo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{82EE868E-E9E9-4D1B-86AF-6DD8481BABA4}|demo\\demo.csproj|solutionrelative:demo\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "viewuser.cshtml",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\Views\\User\\viewuser.cshtml",
+              "RelativeDocumentMoniker": "demo\\Views\\User\\viewuser.cshtml",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\Views\\User\\viewuser.cshtml",
+              "RelativeToolTip": "demo\\Views\\User\\viewuser.cshtml",
+              "ViewState": "AQIAAJMBAAAAAAAAAAAAAKEBAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-02T05:08:05.594Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "VerficationController.cs",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\Controllers\\VerficationController.cs",
+              "RelativeDocumentMoniker": "demo\\Controllers\\VerficationController.cs",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\Controllers\\VerficationController.cs",
+              "RelativeToolTip": "demo\\Controllers\\VerficationController.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAowBwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T06:43:37.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "userlogin.cshtml",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\Views\\User\\userlogin.cshtml",
+              "RelativeDocumentMoniker": "demo\\Views\\User\\userlogin.cshtml",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\Views\\User\\userlogin.cshtml",
+              "RelativeToolTip": "demo\\Views\\User\\userlogin.cshtml",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAADgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-09T05:38:08.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "bootstrap-grid.css",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\wwwroot\\bootstrap\\css\\bootstrap-grid.css",
+              "RelativeDocumentMoniker": "demo\\wwwroot\\bootstrap\\css\\bootstrap-grid.css",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\wwwroot\\bootstrap\\css\\bootstrap-grid.css",
+              "RelativeToolTip": "demo\\wwwroot\\bootstrap\\css\\bootstrap-grid.css",
+              "ViewState": "AQIAANUBAAAAAAAAAAAEwOQBAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-04-09T05:37:51.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "all.min.js",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.min.js",
+              "RelativeDocumentMoniker": "demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.min.js",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.min.js",
+              "RelativeToolTip": "demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.min.js",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAAAQAAADtvhEA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-09T05:37:37.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "all.js",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.js",
+              "RelativeDocumentMoniker": "demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.js",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.js",
+              "RelativeToolTip": "demo\\wwwroot\\Login_v16\\Dashboard\\vendor\\fontawesome-free\\js\\all.js",
+              "ViewState": "AQIAAPEIAAAAAAAAAAAiwP4IAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-09T05:37:31.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\kmccproject\\project\\demo\\appsettings.json",
+              "RelativeDocumentMoniker": "demo\\appsettings.json",
+              "ToolTip": "E:\\kmccproject\\project\\demo\\appsettings.json",
+              "RelativeToolTip": "demo\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-05T09:33:25.546Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

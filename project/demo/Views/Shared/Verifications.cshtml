@@ -1,0 +1,130 @@
+﻿@model demo.Models.Payment
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Verification</title>
+    <!-- Paste the styles from the second page here -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-top: 50px; /* Adjusted padding for better positioning */
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto; /* Center the container */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    @* <form asp-controller="FetchAmount" asp-action="PostAsync" method="post"> *@
+       
+    <div class="container">
+        <h1>Payment Verification</h1>
+        <form method="post" asp-controller="Verification" asp-action="PostAsync">
+        <div>
+            @* <h4>Payment Details</h4>
+            <hr /> *@
+            <div class="form-group">
+                @* <label class="form-label" asp-for="UserId"></label> *@
+                <input asp-for="UserId" class="form-control" hidden />
+            </div>
+            <div class="form-group">
+                @* <label class="form-label" asp-for="TermId"></label> *@
+                <input asp-for="TermId" class="form-control" hidden />
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Amount"></label>
+                <input asp-for="Amount" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Type"></label>
+                @{
+                    string typeValue = Model.Type == 0? "Cash" : (Model.Type == 1 ? "Card" : "");
+                }
+                <input class="form-control" value="@typeValue" disabled />
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Date"></label>
+                <input asp-for="Date" class="form-control" type="date" disabled />
+            </div>
+           @*  <div class="form-group">
+                <label class="form-label" asp-for="Term"></label>
+                <input asp-for="Term" class="form-control" disabled />
+            </div> *@
+          @*   <div class="form-group">
+                <label class="form-label" asp-for="paymentdate"></label>
+                <input asp-for="paymentdate" class="form-control" disabled />
+            </div> *@
+            <div class="form-group">
+                <label class="form-label" asp-for="referenceid"> Reference No:</label>
+                <input asp-for="referenceid" class="form-control" disabled />
+            </div>
+                <div class="form-group">
+                    <label class="form-label" asp-for="Varifiedby">Verified By</label>
+                    <select asp-for="Varifiedby" class="form-control">
+                        <option value="">Select Verified By</option> <!-- Add an empty option for default selection -->
+                        @foreach (var adminName in ViewBag.admin)
+                        {
+                            <option value="@adminName">@adminName</option> <!-- Add an option for each admin name -->
+                        }
+                    </select>
+                </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Varifieddate">Verified Date</label>
+                <input asp-for="Varifieddate" class="form-control" type="date" />
+            </div>
+            <div align="center" style="padding-right:400px;">
+            <button type="submit" class="btn">Submit</button>
+                </div> 
+        </div>
+        </form>
+    </div>
+    
+</body>
+
+</html>

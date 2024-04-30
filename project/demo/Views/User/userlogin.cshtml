@@ -1,0 +1,519 @@
+﻿@* @page "/userlogin" *@
+@model IEnumerable<demo.Models.regModel>
+
+
+@using System.Diagnostics
+@* 
+@model demo.Views.User.DashBoardModel *@
+@{
+    Layout = null; // Example path to the layout
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+
+    <!-- Custom fonts for this template-->
+    <link href="/Login_v16/Dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/Login_v16/Dashboard/css/sb-admin-2.min.css?v3" rel="stylesheet">
+    <link rel="stylesheet" href="/Login_v16/Purple/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/Login_v16/Purple/css/vendor.bundle.base.css">
+    <link rel="shortcut icon" href="/Login_v16/Purple/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/Login_v16/Purple/assets/css/style.css?v3">
+    <link rel="stylesheet" href="/Login_v16/table/css/select.css">
+    <style>
+        .sidebar {
+            min-height: calc(134vh - 70px);
+        }
+
+        @@media (max-width:978px) {
+            .abcde {
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+        }
+        @@media (max-width: 576px) {
+        .col-lg-3,
+        .col-md-6 {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+    }
+
+        .statusbutton{
+            padding:10px
+        }
+    /* Medium devices (tablets) */
+   @@media (min-width: 577px) and (max-width: 992px) {
+        .col-lg-3 {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+        .col-md-6 {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+    }
+
+    /* Large devices (desktops) */
+    @@media (min-width: 993px) {
+        .col-lg-3 {
+            flex-basis: 25%;
+            max-width: 25%;
+        }
+        .col-md-6 {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust minmax() values based on your design */
+            grid-gap: 10px; /* Adjust the gap between items */
+        }
+
+        .grid-item {
+            /* Your card styles here */
+        }
+
+        .btn {
+            padding: 15px 28px;
+            border-radius: 10px;
+            
+        }
+    </style>
+</head>
+
+<body id="page-top" class="abcde">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="width: 10.5rem !important;">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+                <div class="sidebar-brand-icon rotate-n-15">
+                    @* <i class="fas fa-laugh-wink"></i> *@
+                </div>
+              @*   <div class="sidebar-brand-text mx-3">Dashboard <sup></sup></div> *@
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                @* <a class="nav-link" asp-area="User" asp-page="/DashBoard/Index">Dashboard</a> *@
+                <a class="nav-link" asp-controller="userlogin" asp-action="Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>TERMS</span>
+                </a>
+
+
+                    @* <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a> *@
+            </li>
+
+        
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Profile" asp-action="viewprofile">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>PROFILE</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+             @*    <a class="nav-link" asp-controller="Ward1" asp-action="Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>WARD DETAILS</span>
+                </a> *@
+            </li>
+            <li class="nav-item active">
+               @*  <a class="nav-link" asp-controller="Terms" asp-action="Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>TERMS DETAILS</span>
+                </a> *@
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                   
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                      
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                               
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                      
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                       
+                           
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               @*  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span> *@
+                                <img class="img-profile rounded-circle"
+                                     src="/Login_v16/Dashboard//img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="userDropdown">
+                           
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid"  >
+                    <div class="row">
+                        @* <h1 class="h3 mb-2 text-gray-800">Terms</h1> *@
+                        @foreach (var term in ViewBag.TermsList)
+                        {
+                            <div class="col-md-3">
+                                <div class="card bg-gradient-danger card-img-holder text-white card-body col mb-3 " style="height:200px;width:100%;">
+                                    <div class="card-body col" style="padding: 2.5rem 0.5rem;">
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="hidden" id="termIdInput" value="@term.TermId" />
+                                                <h3>Term: @term.Term</h3>
+                                                <h3 id="termAmount" hidden>@term.amount</h3>
+                                                <img src="/Terms/@term.TermPhoto" width="200" height="200" hidden/>
+
+                                                
+                                                </div>
+                                            <div class="col-6 pull-right" style="text-align:right">
+                                                @foreach (var item in Model)
+                                                {
+                                                    string itemId = item.Id.ToString();
+                                                    bool paymentExists = false;
+                                                    foreach (var paymentList in ViewBag.PaymentData)
+                                                    {
+                                                        foreach (var payments in paymentList)
+                                                        {
+                                                            if (payments.TermId == term.TermId && payments.UserId == item.Id)
+                                                            {
+                                                                paymentExists = true;
+                                                                break;
+                                                            }
+                                                        }
+                                                        if (paymentExists)
+                                                        {
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    if (paymentExists)
+                                                    {
+                                                        <!-- If payment exists, display a "Paid" button -->
+                                                        @if (ViewBag.payments != null)
+                                                        {
+                                                            <!-- If ViewBag.payments is not null, display a "Verified" button -->
+                                                            <button class="btn btn-sm edit-link btn-success contact statusbutton" style="font-size:15px;" disabled="disabled">Verified</button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <!-- If ViewBag.payments is null, display a "Waiting for confirmation" button -->
+                                                            <button class="btn btn-sm edit-link btn-success contact statusbutton" style="font-size:15px;" disabled="disabled">Waiting for confirmation</button>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <!-- If payment doesn't exist, display the "Pay" button -->
+                                                        <button class="btn btn-sm btn-primary edit-link contact statusbutton" id="contact" data-dd="@item.Id">Pay</button>
+                                                    }
+                                                }
+                                            </div>
+                                         </div>
+
+                                       @*  <div class=" col">
+                                            <img src="/Login_v16/Purple/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                                        </div> *@
+                                      @*   <div style="top: 16px;">
+                                            <div id="termSelect" class="ct-select ct-js-select" name="CMS Features">
+                                                <table style="border-spacing: 0 10px;">
+                                                    <tr>
+
+                                                        <td style="color: white; text-align: right; vertical-align: top; width: 50%;white-space: nowrap;">
+                                                            <h3>Term: @term.Term</h3>
+                                                        </td>
+                                                        <td style="color: white; text-align: right; vertical-align: top; width: 50%;padding-left:50px;">
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                bool paymentExists = false;
+                                                                foreach (var paymentList in ViewBag.PaymentData)
+                                                                {
+                                                                    foreach (var payment in paymentList)
+                                                                    {
+                                                                        if (payment.TermId == term.TermId && payment.UserId == item.Id)
+                                                                        {
+                                                                            paymentExists = true;
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                    if (paymentExists)
+                                                                    {
+                                                                        break;
+                                                                    }
+                                                                }
+
+                                                                if (paymentExists)
+                                                                {
+                                                                    <!-- If payment exists, display a "Paid" button -->
+                                                                    <button class="btn btn-sm edit-link btn-success contact" disabled="disabled">Paid</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <!-- If payment doesn't exist, display the "Pay" button -->
+                                                                    <button class="btn btn-sm btn-primary edit-link contact" id="contact" data-itemid="@item.Id">Pay</button>
+                                                                }
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                    <tr></tr>
+                                                </table>
+                                            </div>
+                                        </div> *@
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                       
+                    </div>
+                    <div class="row">
+                @*     @RenderBody() *@
+                    <!-- Page Heading -->
+                  
+                   
+                    <div class="row">
+                    
+                    </div>
+                    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <form  method="post">
+                                    <a asp-action="Log" class="btn btn-primary" asp-controller="Logout"> Logout</a>
+                            </form>
+                </div>
+            </div>
+        </div>
+              
+    </div>
+                    <input type="hidden" id="userIdInput" />
+    <!-- Bootstrap core JavaScript-->
+    <script src="/Login_v16/Dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="/Login_v16/Dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/Login_v16/Dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/Login_v16/Dashboard/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/Login_v16/Dashboard/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/Login_v16/Dashboard/js/demo/chart-area-demo.js"></script>
+    <script src="/Login_v16/Dashboard/js/demo/chart-pie-demo.js"></script>
+    <script src="/Login_v16/Dashboard/js/demo/chart-bar-demo.js"></script>
+                    <!-- Payment Modal -->
+                    <!-- Payment Modal -->
+                    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="paymentModalLabel">Payment Confirmation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <!-- Display the image and amount here -->
+                                    <div>
+                                        <img id="termImage" src="" width="300-" height="300">
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <!-- Display the amount here -->
+                                        <label style="font-size: 18px; font-weight: bold;" for="amount">Amount:</label>
+                                        <input style="font-size: 18px; font-weight: bold;" type="text" id="amount" class="form-control" readonly>
+
+                                        <label style="font-size: 18px; font-weight: bold;" for="amount">Transaction date:</label>
+                                        <input style="font-size: 18px; font-weight: bold;" type="date" id="paymentdate" class="form-control" required>
+                                        <label style="font-size: 18px; font-weight: bold;" for="amount">Reference no:</label>
+                                        <input style="font-size: 18px; font-weight: bold;" type="text" id="referenceid" class="form-control" required>
+
+                                    </div>
+                                    <!-- Add your payment confirmation message or form here -->
+                                    <p>Are you sure you want to make the payment?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" id="confirmPaymentBtn">Confirm Payment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="userIdInput" value="itemId" />
+</body>
+
+</html>
+@* <script>
+    $('#termSelect').change(function () {
+        var selectedAmount = $(this).find(':selected').data('amount');
+        $('#amountInput').val(selectedAmount);
+        var selectedTermId = $(this).find(':selected').val(); // Corrected 'val()' function call
+        console.log(selectedTermId); // Corrected 'console.log'
+        window.location.href = '/userlogin/Index?Tid=' + selectedTermId;
+        $('#hiddenTermId').val(selectedTermId);
+        var selectedTerm = $(this).find(':selected').text();
+        $('#term').val(selectedTerm);
+    });
+</script>
+ *@
+@* <script type="text/javascript"> *@
+<script>
+    $(document).ready(function () {
+        // Function to handle showing the payment modal
+        function showPaymentModal(clickedButton) {
+            var amount = $(clickedButton).closest('.card').find('#termAmount').text();
+            $('#amount').val(amount);
+            console.log('Amount:', amount);
+
+            var imageUrl = $(clickedButton).closest('.card').find('img').attr('src');
+            $('#termImage').attr('src', imageUrl);
+
+            $('#paymentModal').modal('show');
+
+            var userId = $(clickedButton).data('dd'); // Change data-itemid to data-dd
+            $('#userIdInput').val(userId); // Update userIdInput value with the retrieved user ID
+            console.log('User ID:', userId);
+
+            var termId = $(clickedButton).closest('.card').find('#termIdInput').val();
+            console.log('Term ID:', termId);
+            $('#termIdInput').val(termId);
+        }
+
+        // Click event handler for the "Pay" button
+        $('.contact').click(function () {
+            showPaymentModal(this);
+        });
+
+        // Click event handler for the "Confirm Payment" button inside the modal
+        $('#confirmPaymentBtn').click(function () {
+            var paymentData = {
+                Amount: $('#amount').val(),
+                UserId: $('#userIdInput').val(),
+                TermId: $('#termIdInput').val(),
+                paymentdate: $('#paymentdate').val(),
+                referenceid: $('#referenceid').val(),
+                Type: 1,
+
+                // Add other properties if needed
+            };
+
+            $.ajax({
+                url: '/api/FetchAmount',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paymentData),
+                success: function (response) {
+                    console.log('Payment successful');
+                    $('#paymentModal').modal('hide');
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    });
+
+</script>
+
