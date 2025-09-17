@@ -1,0 +1,370 @@
+﻿@using demo.Areas.Identity.Data;
+
+@{
+    ViewData["Title"] = "Register";
+   Layout = null;
+}
+
+@model IEnumerable<demo.Models.userview>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Registration Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="css/style.css?v4">
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="~/js/register.js?v4"></script>
+	<script src="public/script.js"></script>
+
+
+	@* //table style *@
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="/Login_v16/table/css/style.css">
+
+	<link rel="stylesheet" href="/css/style.css?v4">
+
+
+
+	
+ <style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #04AA6D;
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: green;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px 1px;
+  cursor: pointer;
+}
+
+</style>
+  
+ 
+  
+</head>
+
+<body x-data="initApp()" x-init="initDatabase()" onsubmit="return validateform()">
+	@using (Html.BeginForm())
+{}
+	<div class="topnav">
+  <a class="active" href="#home">Home</a>
+ @*  <a  id="login" asp-area="Identity" asp-page="/Account/Login>Login</a> *@
+  <a class="active" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+  @* <a href="#contact">Contact</a>
+  <a href="#about">About</a> *@
+</div>
+
+	<div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
+		@*  @Html.HiddenFor(model => model.Id) *@
+		<div class="inner"> 
+			@* <form id="RegisterUser" enctype="multipart/form-data" asp-controller="UserRegistar" asp-action="Post" method="post"> *@
+				@* <div x-on:submit="validateForm()"></div> *@
+				<h3>Registration Form</h3>
+				
+			 <form enctype="multipart/form-data"> 
+				 <div class="form-wrapper"  >
+				
+					<label  for="" >Profile Image</label>
+					 <input  class="form-control" id="files" name="files" type="file" size="1" multiple x-on:change="uploadFiles('files');" required />
+				</div> 
+			</form>
+				
+					<div class="form-wrapper">
+						<label for="">First Name</label>
+						<input   x-model="register.FirstName" type="text" class="form-control" id="FirstName" x-on:change="validateFirstName()" />
+							  <p class="error"  x-text="validations.FNV"></p> 
+  
+					</div>
+			
+					<div class="form-wrapper">
+						<label for="">Last Name</label>
+						<input x-model="register.LastName" type="text" class="form-control"  id="LastName"  x-on:change="validateSecondName()" >
+						 <p class="error"  x-text="validations.LNV"></p>
+					</div>
+				
+					<div class="form-wrapper">
+						<label for="">Address</label>
+					<texarea> <input  x-model="register.Address" class="form-control"  id="Address" x-on:change="validateAddress()"></texarea>
+					 <p class="error"  x-text="validations.ADV"></p>
+					</div>
+					<div class="form-wrapper">
+						<label for="">Ward No</label>
+						<input x-model="register.Ward" type="number" class="form-control"  id="Ward"  x-on:change="validateWard()" >
+						 <p class="error"  x-text="validations.WV"></p>
+					</div>
+					<div class="form-wrapper">
+						<label for="">City</label>
+					<input x-model="register.City" type="text" class="form-control"  id="City" x-on:change="validateCity()">
+					 <p class="error"  x-text="validations.CTV"></p>
+					</div>
+				
+			
+				<div class="form-wrapper">
+					<label for="">Country of Residence</label>
+					<input x-model="register.Country" type="text" class="form-control"  id="Country" x-on:change="validateCountry()">
+					 <p class="error"  x-text="validations.CNV"></p>
+				</div>
+				<div class="form-wrapper">
+					<label for="">Age</label>
+					<input x-model="register.Age" type="text" class="form-control"  id="age" x-on:change="validateAge()" >
+					 <p class="error"  x-text="validations.AV"></p>
+				</div>
+				<div class="form-wrapper">
+					<label for="">phone</label>
+					<input x-model="register.Phone" type="number" class="form-control"  id="Phone" x-on:change="validatePhone()" >
+					 <p class="error"  x-text="validations.PHV"></p>
+				</div>
+				<div class="form-wrapper">
+					<label for="">gender</label>					
+					<select x-model="register.Gender" class="form-control" required id="Gender">
+					<option value="0">Male</option>
+					<option value="1">Female</option>
+					</select>
+				</div>
+				<div class="form-wrapper">
+					<label for="">Email</label>
+					<input x-model="register.Email" type="text" class="form-control"  id="Email" x-on:change="validateEmail()">
+					<p class="error"  x-text="validations.EV"></p>
+				</div>
+				<div class="form-wrapper">
+					<label for="">Password</label>
+					<input x-model="register.Password" type="password" class="form-control" id="Password"   x-on:change="validatePassword()">
+					<p class="error"  x-text="validations.PSV"></p>
+				</div>
+				<div class="form-wrapper">
+					<label for="">Confirm Password</label>
+					<input x-model="register.ConfirmPassword" type="password" class="form-control" required id="ConfirmPassword"  x-on:change="validateConformPassword">
+					<p class="error"  x-text="validations.CPV"></p>
+				</div>
+			
+				<div class="col-md-auto text-right mt-2">
+			@* 	<a class="col btn btn-sm btn-outline-success px-4"  id="add" href="#" x-on:click="addmember()">Add Family Details</a> *@
+			@* <a href="#" id="add" x-on:click="addmember()" class="button">Add Family Details</a> *@
+			
+				</div>
+				<div class="form-wrapper">
+			@* 	<table class="table table-striped" id="contactsTable">
+				
+						
+						<tr>
+							
+							<th>
+								@* <input asp-for="family.First().Name" class="form-control" aria-required="true" /> *@
+								@* 	<label  class="control-label" id="Name">Name</label>
+							</th>
+
+							<th> *@
+								@*  <input asp-for="family.First().Relation" class="form-control" aria-required="true" /> *@
+								@* 	<label  class="control-label" id="Age">Age</label>
+							</th> *@
+							@* <th> *@
+								@*  <input asp-for="family.First().Name" class="form-control" aria-required="true" /> *@
+								@* 	<label  class="control-label" id="Relation">Relation</label>
+							</th>
+
+							<th></th>
+						</tr>
+ *@
+
+		<section class="ftco-section">
+		<div class="container">
+			@* div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5"> *@
+					@* <h2 class="heading-section">Table #01</h2> *@
+			@* 	</div>
+			</div> *@
+			<div class="row">
+			@* 	<div class="col-md-12"> *@
+					<div class="table-wrap">
+						<table class="table"  style="background-image: url('images/bg-registration-form-2.jpg');>
+						  <thead class="thead-primary">
+							  <tr><a  id="add" x-on:click="addmember()" class="button">Add Family Details</a></tr>
+						    <tr>
+						      <th id="Name">First Name</th>
+						      <th id="Age">Age</th>
+						      <th id="Relation">Relation</th>
+							  <th></th>
+						    </tr>
+						  </thead>
+
+					
+					<tbody>
+						<template x-for="ts in familymembers">
+							<tr>
+						@* 		<div class="form-wrapper">
+								<td>
+									<input x-model="ts.Name" class='form-control' />
+								</td>
+								</div>
+								<div class="form-wrapper">
+								<td>
+									<input x-model="ts.Age" class='form-control' />
+								</td>
+								</div>
+								<td>
+									<input x-model="ts.Relation" class='form-control' />
+								</td> *@
+								 <td><input class="form-control" x-model="ts.Name"/></td>
+						      <td><input class="form-control" x-model="ts.Age"  /></td>
+						      <td><input class="form-control" x-model="ts.Relation"  /></td>
+								
+								<td>
+									
+									<button type='button' class='button' x-on:click='deletemember(ts)'>Delete</button
+									
+								</td>
+							</tr>
+						</template>
+					</tbody>
+
+				</table>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+
+				<div class="checkbox">
+					@* <label>
+						<input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+						<span class="checkmark"></span>
+					</label> *@
+				</div>
+			<button type="submit"x-on:click="SaveUser()">Register Now</button>
+			@* </form> *@
+		</div>
+	</div>
+
+<script src="/Login_v16/table/js/jquery.min.js"></script>
+  <script src="/Login_v16/table/js/popper.js"></script>
+  <script src="/Login_v16/table/js/bootstrap.min.js"></script>
+  <script src="/Login_v16/table/js/main.js"></script>
+
+
+
+
+  
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+
+@* @section scripts{
+	<partial name="_ValidationScriptsPartial" />
+	<script type="text/javascript">
+		// Add the following code if you want the name of the file appear on select
+		$(".custom-file-input").on("change", function () {
+			var fileName = $(this).val().split("\\").pop();
+			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+			
+		
+
+		}); *@
+		
+		@* 	// let formData = {
+			// 	// UserImage: $("#UserImage").val(),
+			// 	FirstName: $("#FirstName").val(),
+			// 	LastName: $("#LastName").val(),
+			// 	Address: $("#Address").val(),
+			// 	City: $("#City").val(),
+			// 	Country: $("#Country").val(),
+			// 	age: $("#age").val(),
+			// 	Phone: $("#Phone").val(),
+			// 	Gender: $("#Gender").val(),
+			// 	Email: $("#Email").val(),
+			// 	Password: $("#Password").val(),
+			// 	Password: $("#Password").val(),
+			// 	Name: $("#Name").val(),
+			// 	Relation: $("#Relation").val(),
+			// 	occupation: $("#occupation").val(),
+
+			// }
+			// alert(formData)
+			// $.ajax({
+
+			// 	type: 'POST',
+			// 	url: '/api/UserRegistar',
+			// 	contentType: 'application/json', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+			// 	data: formData,
+
+			// 	success: function (result) {
+			// 		alert('Successfully received Data ');
+			// 		console.log(result);
+			// 	},
+			// 	error: function () {
+			// 		alert('Failed to receive the Data');
+			// 		console.log('Failed ');
+			// 	}
+			// })
+		
+		
+
+
+		// var count = 0;
+		// function addContact() {
+		// 	var table = document.querySelector("tbody");
+		// 	table.insertAdjacentHTML("beforeend", "<tr>" +
+		// 		"<td>" +
+		// 		 "<input asp-for='addfam[" + count + "].Name' class='form-control'/>" +
+		// 		"<span asp-validation-for='Model.family[" + count + "].Name' class='text-danger'></span >" +
+		// 		"</td>" +
+		// 		"<td>" +
+		// 		"<input asp-for='addfam[" + count + "].Relation' class='form-control'/>" +
+		// 		"<span asp-validation-for='Model.family[" + count + "].Relation' class='text-danger'></span >" +
+		// 		"</td>" +
+		// 		"<td>" +
+		// 		 "<input asp-for='addfam[" + count + "].Age' class='form-control'/>" +
+		// 		"<span asp-validation-for='Model.family[" + count + "].Age' class='text-danger'></span >" +
+		// 		"</td>" +
+		// 		"<td>" +
+		// 		"<button type='button' class='btn btn-sm btn-outline-danger' onclick='deleteContact(this)'>Delete</button>" +
+		// 		"</td>" +
+		// 		"</tr>");
+		// 	count++;
+		// }
+		// function deleteContact(button) {
+		// 	button.closest("tr").remove();
+		// }
+
+ *@
+
+	</script>
+

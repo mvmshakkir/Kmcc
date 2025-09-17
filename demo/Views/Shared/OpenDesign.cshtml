@@ -1,0 +1,9 @@
+﻿@model demo.Models.RefNoTrackRequest
+@{
+    Layout = null;
+}
+@* @Html.ActionLink("", "GetReport", "ReportDesigner", new { id = Model.RefNo }, new { target = "_blank", @id = "anchorclick" }) *@
+@Html.ActionLink("", "Reports", "Design", new { id = Model.RefNo }, new { target = "_blank", @id = "anchorclick" })
+<script>
+    document.getElementById('anchorclick').click();
+</script>

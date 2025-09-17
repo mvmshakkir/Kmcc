@@ -1,0 +1,161 @@
+﻿@page 
+
+@using demo.Areas.Identity.Data;
+
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+}
+
+ 
+
+
+
+<html lang="en">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/Login_v16/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/Login_v16/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/Login_v16/css/util.css?v4">
+    <link rel="stylesheet" type="text/css" href="/Login_v16/css/main.css?v5">
+    <link rel="stylesheet" type="text/css" href="/Login_v16/css/Loginstyle.css?v4">
+
+<!--===============================================================================================-->
+  <style type="text/css">
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        @@media (max-width:768px) {  
+            .abcd
+            {
+                margin-left: 15px;
+                margin-right: 14px;
+            }
+        }
+
+        .small {
+            font-size: 100%;
+            font-weight: 500;
+        }
+  </style>
+
+</head>
+<body  style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg');background-repeat: no-repeat;">
+    
+        <section class="h-100 gradient-form" >
+        <div class="container py-5 h-100" >
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+
+                                    <div class="text-center">
+                                        <img src="/Login_v16/images/VAZHAKKAD.jpg" alt="user" height="100" width="100">
+                                        <h4 class="mt-1 mb-5 pb-1">Welcome to login </h4>
+                                    </div>
+
+                                    <form class="login100-form validate-form p-b-33 p-t-5" id="account" method="post">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        @* <p>Please login to your account</p> *@
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" >Phone</label>
+                                            <input asp-for="Input.Phone" name="Phone" type="text" class="form-control"
+                                                   placeholder=" Indian Phone Number " required/>
+                                            <span asp-validation-for="Input.Phone" class="text-danger" class="focus-input100" data-placeholder=""></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example22">Date of Birth</label>
+                                            <input asp-for="Input.DateOfBirth" name="DateOfBirth" type="date" class="form-control" placeholder=" Password" required />
+                                            <span asp-validation-for="Input.DateOfBirth" class="text-danger" class="focus-input100" data-placeholder=""></span>
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <button id="login-submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">
+                                                Log
+                                                in
+                                            </button>
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <br />
+                                                <a href="/Register/Index" style="color: black;font-size: 16px;">Register</a><br />
+                                               @*  <a class="nav-link" asp-controller="RegNo" asp-action="Index" style="color: black;font-size: 16px;">Forgot Password</a> *@
+                                                <a class="nav-link" asp-controller="MemberSearch" asp-action="Index" style="color: black;font-size: 16px;">Search</a>
+
+                                            @* <a class="text-muted" href="#!">Forgot password?</a> *@
+                                        </div>
+
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                          @*   <p class="mb-0 me-2">Don't have an account?</p>
+                                            <button button id="login-submit" class="btn btn-outline-danger">Create new</button> *@
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2 abcd">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">About Us </h4>
+                                    <p class="small mb-0 small">
+                                        The Kerala Muslim Cultural Centre (KMCC) is an expatriate charity and volunteer organisation for expatriates from Kerala.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+	
+<!--===============================================================================================-->
+	<script src="/Login_v16/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v16/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v16/vendor/bootstrap/js/popper.js"></script>
+	<script src="/Login_v16/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v16/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v16/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/Login_v16/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v16/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="/Login_v16/js/main.js"></script>
+
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" /> 
+}

@@ -1,0 +1,89 @@
+﻿
+
+@{
+	ViewData["Title"] = "WARD REPORT";
+	
+}
+
+<html>
+<head>
+	<title>Reset Password</title>
+	<link rel="stylesheet" href="css/style.css?v4">
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="/js/register.js?v4"></script>
+	<script src="public/script.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="/Login_v16/table/css/style.css">
+
+	<link rel="stylesheet" href="/css/style.css?v4">
+
+	<style>
+		/* Your CSS styles */
+	</style>
+</head>
+<body style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg');">
+
+	<div class="form-wrapper" align="center">
+		@* <form id="wardForm" method="post" asp-controller="WardReport" asp-action="PostWard" >
+			<!-- Update ControllerName with your actual controller name -->
+			<label for="wardSelect">Select Ward:</label>
+			<select id="wardSelect" name="wardId" class="form-control">
+				@foreach (var wardItem in ViewBag.Ward)
+				{
+					<option value="@wardItem.Id">@wardItem.Wardname</option>
+				}
+			</select>
+			<button type="submit" class="button">Submit</button>
+		</form> *@
+		<form id="wardForm" method="post" asp-controller="WardReport" asp-action="PostWard">
+			<label for="wardSelect">Select Ward:</label>
+			<select id="wardSelect" name="wardId" class="form-control" style="width:42%;margin-top:31px;">
+				@foreach (var wardItem in ViewBag.Ward)
+				{
+					<option value="@wardItem.Id">@wardItem.Wardno-@wardItem.Wardname</option>
+				}
+			</select>
+			<label for="Termid">Select Term:</label>
+			<select id="Termid" name="Termid" class="form-control" style="width:42%;">
+				@foreach (var item in ViewBag.Terms)
+				{
+					<option value="@item.TermId">@item.Term</option>
+				}
+			</select>
+			<label for="statusid">Status</label>
+			<select id="" name="statusid" class="form-control" style="width:42%;">
+				<option value="1">Paid</option>
+				<option value="2">Pending</option>
+			</select>
+			<button type="submit" class="button">Submit</button>
+		</form>
+	</div>
+
+	<!-- Include your scripts at the end of the body -->
+	<script src="/Login_v16/table/js/jquery.min.js"></script>
+	<script src="/Login_v16/table/js/popper.js"></script>
+	<script src="/Login_v16/table/js/bootstrap.min.js"></script>
+	<script src="/Login_v16/table/js/main.js"></script>
+</body>
+
+<script>
+	function submitForm() {
+		// Get selected values from the dropdowns
+		var termId = document.getElementById("Termid").value;
+		var wardNo = document.getElementById("wardSelect").value;
+		var statusId = document.getElementById("statusid").value;
+
+		// Set values to hidden input fields
+		document.getElementById("termIdHidden").value = termId;
+		document.getElementById("wardNoHidden").value = wardNo;
+		document.getElementById("statusIdHidden").value = statusId;
+
+		// Submit the form
+		document.getElementById("wardForm").submit();
+	}
+</script>
+</html>

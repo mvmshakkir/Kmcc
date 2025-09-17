@@ -1,0 +1,126 @@
+﻿@page "/Terms"
+@model demo.Models.Terms
+@{
+	ViewData["Title"] = "Add Terms";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+	<head>
+		<title>Ward Details</title>
+	<link rel="stylesheet" href="css/style.css?v4">
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="/js/register.js?v4"></script>
+	<script src="public/script.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="/Login_v16/table/css/style.css">
+
+	<link rel="stylesheet" href="/css/style.css?v4">
+
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.topnav {
+			overflow: hidden;
+			background: linear-gradient(to right, #37f67f, #12d34c) !important;
+		}
+
+			.topnav a {
+				float: right;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 20px 20px;
+				text-decoration: none;
+				font-size: 20px;
+			}
+
+				.topnav a:hover {
+					background-color: #ddd;
+					color: green;
+				}
+
+		.button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 5px 5px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 1px 1px;
+			cursor: pointer;
+		}
+
+		.form-control {
+			width: 500px; 
+		}
+
+		.form-wrapper {
+			margin-bottom: 10px;
+			padding:10px;
+		}
+
+		.form-inputs {
+			display: inline-block; /* Ensures form elements are on the same line */
+		}
+
+			.form-inputs .form-wrapper {
+				display: block; /* Sets each form input as a block for vertical alignment */
+			}
+
+		.center-button {
+			text-align: center; /* Aligns the button to the center */
+			width: 100%; /* Forces the container to take full width */
+		}
+
+			.center-button button {
+				display: inline-block; /* Makes the button inline-block to center it */
+			}
+
+	</style>
+
+
+</head>
+	<body>
+	<form enctype="multipart/form-data"  method="post" asp-controller="Terms" asp-action="PostTerm">
+		<div class="form-inputs">
+			<div class="form-wrapper">
+				<label for="">Term</label>
+				<input asp-for="Term" class="form-control" id="Term" name="Term" type="text" required />
+			</div>
+			<div class="form-wrapper">
+				<label for="">Description</label>
+				<input asp-for="Description" class="form-control" id="Description" name="Description" type="text" required />
+			</div>
+			<div class="form-wrapper">
+				<label for="">Amount</label>
+				<input asp-for="amount" class="form-control" id="amount" name="amount" type="number" required />
+			</div>
+
+			<div class="form-wrapper">
+				<label for="TermPhotoFile">Qr Code</label>
+				<input asp-for="TermPhotoFile" class="form-control" id="TermPhotoFile" name="TermPhotoFile" />
+			</div>
+			<div class="center-button">
+				<button type="submit">Add</button>
+			</div>
+		</div>
+
+
+	</form>
+
+	<script src="/Login_v16/table/js/jquery.min.js"></script>
+	<script src="/Login_v16/table/js/popper.js"></script>
+	<script src="/Login_v16/table/js/bootstrap.min.js"></script>
+	<script src="/Login_v16/table/js/main.js"></script>
+
+	</body>
+</html>

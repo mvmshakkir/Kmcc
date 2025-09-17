@@ -1,0 +1,182 @@
+﻿@using demo.Areas.Identity.Data;
+
+@model demo.Models.regModel
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm" enctype="multipart/form-data" asp-route-returnUrl="" asp-controller="AddFamily" asp-action="RegForm" method="post">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+
+
+
+
+            <div class="form-floating">
+                    <input asp-for="FirstName" class="form-control" aria-required="true" />
+                    <label asp-for="FirstName"></label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+           
+                
+            
+            <div class="form-floating">
+                <input asp-for="LastName" class="form-control" aria-required="true" />
+                <label asp-for="LastName"></label>
+                <span asp-validation-for=" LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Address" class="form-control" aria-required="true" />
+                <label asp-for="Address"></label>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="City" class="form-control" aria-required="true" />
+                <label asp-for="City"></label>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Country" class="form-control" aria-required="true" />
+                <label asp-for="Country"></label>
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Phone" class="form-control" aria-required="true" />
+                <label asp-for="Phone"></label>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Age" type="number" class="form-control" aria-required="true" />
+                <label asp-for="Age"></label>
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-floating">
+
+                <select asp-for="Gender" class="form-control" >
+
+                    <
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+
+
+                </select>
+
+            </div>
+           
+            <div>
+
+            <div class="form-floating">
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Password"></label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="ConfirmPassword"></label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+                <div class="col-md-auto text-right mt-2">
+                    <a class="col btn btn-sm btn-outline-success px-4" id="add" href="#" onclick="addContact()">Add Family Details</a>
+                </div>
+                <table class="table mt-2" id="contactsTable">
+                    <thead>
+                      
+                        <tr>
+                            <th>
+                                @* <input asp-for="family.First().Name" class="form-control" aria-required="true" /> *@
+                                <label input asp-for="family.First().Name" class="control-label"></label>
+                            </th>
+
+                            <th>
+                                @*  <input asp-for="family.First().Relation" class="form-control" aria-required="true" /> *@
+                                <label input asp-for="family.First().Relation" class="control-label"></label>
+                            </th>
+                            <th>
+                                @*  <input asp-for="family.First().Name" class="form-control" aria-required="true" /> *@
+                                <label input asp-for="family.First().Age" class="control-label"></label>
+                            </th>
+
+                            <th></th>
+                        </tr>
+                       
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            </form>
+    </div>
+</div>
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            
+        });
+
+
+        var count = 0;
+        function addContact() {
+            var table = document.querySelector("tbody");
+            table.insertAdjacentHTML("beforeend", "<tr>" +
+                "<td>" +
+                "<input asp-for='addfam[" + count + "].Name' class='form-control'/>" +
+                "<span asp-validation-for='Model.family[" + count + "].Name' class='text-danger'></span >" +
+                "</td>" +
+                "<td>" +
+                "<input asp-for='addfam[" + count + "].Relation' class='form-control'/>" +
+                "<span asp-validation-for='Model.family[" + count + "].Relation' class='text-danger'></span >" +
+                "</td>" +
+                "<td>" +
+                "<input asp-for='addfam[" + count + "].occupation' class='form-control'/>" +
+                "<span asp-validation-for='Model.family[" + count + "].occupation' class='text-danger'></span >" +
+                "</td>" +
+                "<td>" +
+                "<button type='button' class='btn btn-sm btn-outline-danger' onclick='deleteContact(this)'>Delete</button>" +
+                "</td>" +
+                "</tr>");
+            count++;
+        }
+        function deleteContact(button) {
+            button.closest("tr").remove();
+        }
+
+
+
+    </script>
+}
+
+

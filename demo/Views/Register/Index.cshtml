@@ -1,0 +1,541 @@
+﻿@using demo.Areas.Identity.Data;
+
+@{
+    ViewData["Title"] = "Register";
+   Layout = null;
+}
+
+@model demo.Models.EditId
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title style="font-size:16px;">Registration Form</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- STYLE CSS -->
+	@* <link rel="stylesheet" href="css/style.css?v5"> *@
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="/js/register.js?v4"></script>
+	<script src="public/script.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.js"></script>
+
+
+	@* //table style *@
+
+	@* <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'> *@
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	@* <link rel="preload" href="~/style1.css?v3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="~/style1.css?v4"></noscript> *@
+	<link rel="stylesheet" href="~/style1.css?v5">
+	<link rel="stylesheet" href="/Login_v16/table/css/style.css?v4"> 
+
+	  <link rel="stylesheet" href="/css/style.css?v4"> 
+
+@* 	<link rel="stylesheet" href="~/style1.css?v2"> *@
+
+	
+ <style>
+		/* CSS Reset */
+	/* 	
+		@@media (max-width:768px) {
+			abcda {
+				margin-left: 0px !important;
+				margin-right: -604px !important;
+				width:50%; */
+				/* font-size: calc(1.5vw + 10px) !important;
+				width: calc(100% -40px);
+			}
+
+			.form-control {
+				width: 76% !important;
+			}
+		} 
+
+/* body {
+  margin: 0;
+ /*  font-family: Arial, Helvetica, sans-serif; */
+
+
+/* }  */
+		#imagePreview {
+			max-width: 100%; /* Ensure the image fits within the container */
+			max-height: 400px; /* Adjust this value to your preference */
+			width: auto;
+			height: auto;
+			display: none; /* Initially hide the image */
+		}
+	 #imageContainer {
+        width: 500px;
+        height: 500px;
+        display: none;
+        margin-left: 130px; /* Default margin-left */
+    }
+
+    /* Example for medium screens (between 768px and 992px) */
+    @@media (max-width: 992px) {
+        #imageContainer {
+            margin-left: 50px; /* Adjust for medium screens */
+        }
+    }
+
+    /* Example for small screens (below 768px) */
+    @@media (max-width: 768px) {
+        #imageContainer {
+            margin-left: 20px; /* Adjust for small screens */
+        }
+    }
+
+    /* Example for very small screens (below 576px) */
+    @@media (max-width: 576px) {
+        #imageContainer {
+            margin-left: 10px; /* Adjust for very small screens */
+        }
+    } 
+		.error {
+			color: red;
+		}
+.inner{
+			padding-left: 14px;
+			padding-bottom: 200px;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px 1px;
+  cursor: pointer;
+}
+
+		
+</style>
+  
+ 
+  
+</head>
+
+<body class="abcda" x-data="initApp()" x-init="initDatabase('@Model.userid')" onsubmit="return validateform()">
+	@* <div class="topnav"> *@
+	@*   <aclass="active" href="/User/Dashboard">Home</a> *@
+ @*  <a  id="login" asp-area="Identity" asp-page="/Account/Login>Login</a> *@
+ @*  <a class="active" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a> *@
+  @* <a href="#contact">Contact</a>
+  <a href="#about">About</a> *@
+</div>
+
+	<div class="wrapper " style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg');">
+		<div class="inner"> 
+			@* <form id="RegisterUser" enctype="multipart/form-data" asp-controller="UserRegistar" asp-action="Post" method="post"> *@
+				@* <div x-on:submit="validateForm()"></div> *@
+				<h3 align="ceneter">Registration Form</h3>
+				
+@* 			 <form enctype="multipart/form-data"> 
+				 <div class="form-wrapper"  >
+				
+					<label  for="" >Profile Image</label>
+				
+					 <input  class="form-control"  id="files" name="files" type="file" size="1" multiple x-on:change="uploadFiles('files');" required />
+					
+				</div>
+				
+			</form> *@
+			<div class="image-container">
+			<form enctype="multipart/form-data">
+				<div class="form-wrapper">
+					<label for="files">Profile Image</label>
+					<input class="form-control" id="files" name="files" type="file" size="1" accept="image/*" multiple x-on:change="uploadFiles('files');" required />
+						<div id="imageContainer" style="width: 300px; height: 300px; display: none;">
+					<img x-ref="imagePreview" style="display: none;" />
+					</div>					
+					<button id="cropButton" style="display: none;margin-left:150px" type="button" x-on:click="cropAndUploadImage">Crop and Upload</button>
+				</div>
+			</form>
+			</div>
+
+
+			@* <div class="container" x-data="imageCropper()">
+				<h1>Image Upload and Crop</h1>
+				<form enctype="multipart/form-data">
+					<div class="form-wrapper">
+						<label for="files">Profile Image</label>
+						<input class="form-control"
+							   id="files"
+							   name="files"
+							   type="file"
+							   size="1"
+							   multiple
+							   x-on:change="uploadFiles($event)"
+							   required />
+					</div>
+				</form>
+				<div>
+					<img id="imagePreview" x-ref="imagePreview">
+				</div>
+				<button id="cropButton" x-on:click="cropImage">Submit</button>
+			</div>
+			 *@
+
+					<div class="form-wrapper">
+				<label for="">First Name<b style="color:red;">*</b></label>
+						<input x-model="register.FirstName" type="text" class="form-control"  id="FirstName" x-on:change="validateFirstName()" />
+							  <p class="error"  x-text="validations.FNV"></p> 
+  
+					</div>
+					<div class="form-wrapper">
+				<label for="">Last Name<b style="color:red;">*</b></label>
+						<input x-model="register.LastName" type="text" class="form-control"  id="LastName"  x-on:change="validateSecondName()" >
+						 <p class="error"  x-text="validations.LNV"></p>
+					</div>
+				
+					<div class="form-wrapper">
+				<label for="">House Name<b style="color:red;">*</b></label>
+					<texarea> <input  x-model="register.Address" class="form-control"  id="Address" x-on:change="validateAddress()"></texarea>
+					 <p class="error"  x-text="validations.ADV"></p>
+					</div>
+
+					<div  class="form-wrapper">
+
+				<label for="">Ward Name<b style="color:red;">*</b></label>
+				<select x-model="register.Ward"  class="form-control" required id="Ward">
+					<option value="" disabled selected>Select Ward</option>
+						@foreach (var ward in Model.Ward)
+							{
+								 <option value="@ward.Id" >@ward.Wardno-@ward.Wardname</option>
+							}					
+					</select>				
+					</div>
+					<div class="form-wrapper">
+				<label for="">Residence Country City<b style="color:red;">*</b></label>
+					<input x-model="register.City" type="text" class="form-control"  id="City" x-on:change="validateCity()">
+					 <p class="error"  x-text="validations.CTV"></p>
+					</div>		
+				<div class="form-wrapper">
+				<label for="Country">Country of Residence<b style="color:red;">*</b></label>
+	<select class="form-control" id="Country" x-model="register.Country" x-on:change="validateCountry()">
+				
+		<option value="" disabled selected>Select Country</option>
+						@foreach (var country in Model.ListCountrie)
+						{
+						<option value="@country.Id">@country.Countrie</option>
+						
+						}
+	</select>
+	<p class="error" x-text="validations.CNV"></p>
+</div>
+
+
+
+
+				<div class="form-wrapper">
+				<label for="">Age<b style="color:red;">*</b></label>
+					<input x-model="register.Age" type="number" class="form-control"  id="age" x-on:change="validateAge()" >
+					 <p class="error"  x-text="validations.AV"></p>
+				</div>
+				<div class="form-wrapper">
+				<label for="">Date Of Birth<b style="color:red;">*</b></label>
+				<input x-model="register.DateOfBirth" type="date" class="form-control" id="DateOfBirth" x-on:change=" validatedob()">
+					 <p class="error"  x-text="validations.DOBV"></p>
+				</div>
+			@if (string.IsNullOrEmpty(@Model.userid))
+			{
+				<div class="form-wrapper">
+				<label for="">Indian Phone Number<b style="color:red;">*</b></label>
+				<input x-model="register.Phone" type="tel" class="form-control" id="Phone" x-on:input="register.Phone = register.Phone.replace(/\s+/g, '')" x-on:change="validatePhone() ">
+					 <p class="error"  x-text="validations.PHV"></p>
+				</div>
+			}
+				<div class="form-wrapper">
+				<label for="">Residence Phone Number<b style="color:red;">*</b></label>
+				<input x-model="register.AbroadPhone" type="text" class="form-control" id="AbroadPhone" x-on:change=" validateAbroadPhone()">
+					 <p class="error"  x-text="validations.APV"></p>
+				</div>
+			<div class="form-wrapper">
+				<label for="">Whatsapp Number<b style="color:red;">*</b></label>
+				<input x-model="register.Whatsapp" type="text" class="form-control" id="Whatsapp" x-on:change=" validateWhatsapp()">
+				<p class="error" x-text="validations.WPV"></p>
+			</div>
+
+				<div class="form-wrapper">
+				<label for="">Gender<b style="color:red;">*</b></label>
+				<select x-model="register.Gender" class="form-control" required id="Gender">
+					<option value="0">Male</option>
+					<option value="1">Female</option>
+					</select>
+				</div>
+			<div class="form-wrapper">
+				<label for="">Present Status<b style="color:red;">*</b></label>
+				<select x-model="register.PravasiStatus" class="form-control" required id="PravasiStatus">
+					<option value="" disabled selected>Select Pravasi Status</option>
+					<option value="0">Pravasi</option>
+					<option value="1">ExPravasi</option>
+					@* <p class="error" x-text="validations.PRV"></p> *@
+				</select>
+			</div>
+			@* @if (string.IsNullOrEmpty(@Model.userid))
+			{ *@
+		@* 		<div class="form-wrapper">
+					<label for="">Email<b style="color:red;">*</b></label>
+					<input x-model="register.Email" type="text" class="form-control" id="Email" x-on:change="validateEmail()">
+					<p class="error" x-text="validations.EV"></p>
+				</div>
+
+				<div class="form-wrapper">
+					<label for="">Password<b style="color:red;">*</b></label>
+					<input x-model="register.Password" type="password" class="form-control" id="Password" x-on:change="validatePassword()">
+					<p class="error" x-text="validations.PSV"></p>
+				</div>
+
+				<div class="form-wrapper">
+					<label for="">Confirm Password<b style="color:red;">*</b></label>
+					<input x-model="register.ConfirmPassword" type="password" class="form-control" id="ConfirmPassword" x-on:change="validateConformPassword()">
+					<p class="error" x-text="validations.CPV"></p>
+				</div> *@
+			@* } *@
+
+			
+				<div class="col-md-auto text-right mt-2">
+			@* 	<a class="col btn btn-sm btn-outline-success px-4"  id="add" href="#" x-on:click="addmember()">Add Family Details</a> *@
+			@* <a href="#" id="add" x-on:click="addmember()" class="button">Add Family Details</a> *@
+			
+				</div>
+				<div class="form-wrapper">
+			@* 	<table class="table table-striped" id="contactsTable">
+				
+						
+						<tr>
+							
+							<th>
+								@* <input asp-for="family.First().Name" class="form-control" aria-required="true" /> *@
+								@* 	<label  class="control-label" id="Name">Name</label>
+							</th>
+
+							<th> *@
+								@*  <input asp-for="family.First().Relation" class="form-control" aria-required="true" /> *@
+								@* 	<label  class="control-label" id="Age">Age</label>
+							</th> *@
+							@* <th> *@
+								@*  <input asp-for="family.First().Name" class="form-control" aria-required="true" /> *@
+								@* 	<label  class="control-label" id="Relation">Relation</label>
+							</th>
+
+							<th></th>
+						</tr>
+ *@
+
+		<section class="ftco-section">
+		<div class="container">
+			@* div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5"> *@
+					@* <h2 class="heading-section">Table #01</h2> *@
+			@* 	</div>
+			</div> *@
+			<div class="row">
+							@* https://localhost:7009/Login_v16/images/bg-registration-form-2.jpg *@
+			@* 	<div class="col-md-12"> *@
+							<div class="table-wrap" >
+								<table class="table" style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg') !important;">
+									<thead class="thead-primary" style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg') !important;">
+						  <p>Note: Please add family details in priority order (e.g., father, mother, wife, etc.).</p>
+							  <tr style="height: 20px;background-color: green !important;"><a style="color:white;background-color: #28a745;"  id="add" x-on:click="addmember()" class="button">Add Family Details</a></tr> 
+							
+							  <br />
+							<tr >
+											<th style="height: 20px;color:white;background-color: #28a745;" id="Name"> Name</th>
+											<th style="color:white;background-color: #28a745;" id="Age">Age</th>
+											<th style="color:white;background-color: #28a745;"  id="Relation">Relation</th>
+											<th style="color:white;background-color: #28a745;"></th>
+						    </tr>
+						  </thead>
+
+
+									<tbody style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg') !important;">
+						<template x-for="ts in familymembers">
+											<tr style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg') !important;">
+						@* 		<div class="form-wrapper">
+								<td>
+									<input x-model="ts.Name" class='form-control' />
+								</td>
+								</div>
+								<div class="form-wrapper">
+								<td>
+									<input x-model="ts.Age" class='form-control' />
+								</td>
+								</div>
+								<td>
+									<input x-model="ts.Relation" class='form-control' />
+								</td> *@
+								 <td><input class="form-control" x-model="ts.Name"/></td>
+						      <td><input class="form-control" x-model="ts.Age" type="number" /></td>
+						   @*<td><input class="form-control" x-model="ts.Relation"  /></td> *@
+							  <td>
+					<select class="form-control" x-model="ts.Relation">
+					<option value="" selected>select</option>
+						<option value="Father" >Father</option>
+						<option value="Mother">Mother</option>
+						<option value="Wife">Wife</option>
+						<option value="Husband">Husband</option>
+						<option value="Son">Son</option>
+						<option value="Daughter">Daughter</option>
+						<option value="Brother">Brother</option>
+						<option value="Sister">Sister</option>
+					</select>
+				</td>
+								
+								<td>
+									
+									<button type='button' class='button' x-on:click='deletemember(ts)'>Delete</button>
+									
+								</td>
+							</tr>
+						</template>
+					</tbody>
+
+				</table>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+
+				<div class="checkbox">
+					@* <label>
+						<input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+						<span class="checkmark"></span>
+					</label> *@
+				</div>
+			@* <button type="submit"x-on:click="SaveUser()" ><a href="/User/viewuser">Register Now</a></button> *@
+			@* <button   type="submit" x-on:click="SaveUser()">Register Now</button>*@
+				@if (!string.IsNullOrEmpty(@Model.userid))
+				{
+		<button type="submit" x-on:click="SaveUser()">Update</button>
+				}
+				else
+				{
+		<button type="submit" x-on:click="SaveUser()">Register Now</button>
+				}
+
+
+
+			@* </form> *@
+		</div>
+	</div>
+
+<script src="/Login_v16/table/js/jquery.min.js"></script>
+  <script src="/Login_v16/table/js/popper.js"></script>
+  <script src="/Login_v16/table/js/bootstrap.min.js"></script>
+  <script src="/Login_v16/table/js/main.js"></script>
+
+
+
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+
+
+<script>
+	function checkEmailAvailability() {
+		var email = document.getElementById('Email').value;
+		fetch(`/api/EmailCheck?email=${encodeURIComponent(email)}`)
+			.then(response => response.json())
+			.then(data => {
+				var validationError = document.getElementById('emailValidationError');
+				if (data.exists) {
+					validationError.textContent = 'Email is already taken.';
+				} else {
+					validationError.textContent = 'Email is available.';
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				validationError.textContent = 'Error checking email availability.';
+			});
+	}
+</script>
+@* <script>
+	function imageCropper() {
+		return {
+			cropper: null,
+
+			previewAndCropImage(event) {
+				const file = event.target.files[0];
+				if (file) {
+					const reader = new FileReader();
+					reader.onload = (e) => {
+						const image = this.$refs.imagePreview;
+						image.src = e.target.result;
+						image.style.display = 'block';
+
+						if (this.cropper) {
+							this.cropper.destroy(); // Destroy previous cropper instance if it exists
+						}
+
+						// Initialize Cropper.js
+						this.cropper = new Cropper(image, {
+							aspectRatio: 1, // Adjust aspect ratio as needed
+							viewMode: 1,
+							ready() {
+								document.getElementById('cropButton').style.display = 'block';
+							}
+						});
+					};
+					reader.readAsDataURL(file);
+				}
+			},
+
+			cropAndUploadImage() {
+				if (this.cropper) {
+					const canvas = this.cropper.getCroppedCanvas();
+					canvas.toBlob((blob) => {
+						const croppedFile = new File([blob], "cropped_image.jpg", { type: "image/jpeg" });
+
+						// Create a new FormData object and append the cropped image file
+						const formData = new FormData();
+						formData.append("files", croppedFile);
+
+						// Call the upload function
+						this.uploadFilesWithFormData(formData);
+
+						// Hide image preview and crop button
+						this.$refs.imagePreview.style.display = 'none';
+						document.getElementById('cropButton').style.display = 'none';
+
+						// Destroy cropper instance
+						this.cropper.destroy();
+					}, 'image/jpeg');
+				}
+			},
+
+			uploadFilesWithFormData(formData) {
+				$.ajax({
+					url: "/api/UploadFile",
+					data: formData,
+					processData: false,
+					contentType: false,
+					type: "POST",
+					success: function (data) {
+						console.log('Upload successful:', data);
+						// Handle the response as needed
+					},
+					error: function (error) {
+						console.error('Upload failed:', error);
+					}
+				});
+			}
+		};
+	}
+</script> *@

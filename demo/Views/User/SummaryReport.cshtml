@@ -1,0 +1,80 @@
+﻿
+
+@{
+	ViewData["Title"] = "Summary Report";
+	
+}
+
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/style.css?v4">
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="/js/register.js?v4"></script>
+	<script src="public/script.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="/Login_v16/table/css/style.css">
+
+	<link rel="stylesheet" href="/css/style.css?v4">
+
+	<style>
+		/* Your CSS styles */
+	</style>
+</head>
+<body style="background-image: url('/Login_v16/images/bg-registration-form-2.jpg');">
+
+	<div class="form-wrapper" align="center">
+		@* <form id="wardForm" method="post" asp-controller="WardReport" asp-action="PostWard" >
+			<!-- Update ControllerName with your actual controller name -->
+			<label for="wardSelect">Select Ward:</label>
+			<select id="wardSelect" name="wardId" class="form-control">
+				@foreach (var wardItem in ViewBag.Ward)
+				{
+					<option value="@wardItem.Id">@wardItem.Wardname</option>
+				}
+			</select>
+			<button type="submit" class="button">Submit</button>
+		</form> *@
+		<form id="SummaryForm" method="post" asp-controller="SummaryReport" asp-action="PostSummary">
+			
+			<label for="Termid" style="margin-top:200px;">Select Term:</label>
+			<select id="Termid" name="Termid" class="form-control" style="width:42%;">
+				@foreach (var item in ViewBag.Terms)
+				{
+					<option value="@item.TermId">@item.Term</option>
+				}
+			</select>
+		@* 	<label for="statusid">Status</label>
+			<select id="" name="statusid" class="form-control" style="width:42%;">
+				<option value="1">Paid</option>
+				<option value="2">Pending</option>
+			</select> *@
+			<button type="submit" class="button">Submit</button>
+		</form>
+	</div>
+
+	<!-- Include your scripts at the end of the body -->
+	<script src="/Login_v16/table/js/jquery.min.js"></script>
+	<script src="/Login_v16/table/js/popper.js"></script>
+	<script src="/Login_v16/table/js/bootstrap.min.js"></script>
+	<script src="/Login_v16/table/js/main.js"></script>
+</body>
+
+<script>
+	function submitForm() {
+		// Get selected values from the dropdowns
+		var termId = document.getElementById("Termid").value;
+		
+
+		// Set values to hidden input fields
+		document.getElementById("termIdHidden").value = termId;
+		
+		// Submit the form
+		document.getElementById("SummaryForm").submit();
+	}
+</script>
+</html>

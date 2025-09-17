@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	  <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+   <!--<Nullable>enable</Nullable>-->
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <Content Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\template.cshtml" />
+    <Content Remove="wwwroot\css\KMCC_LOGO_2021.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="userhome.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Shared\Template.cshtml" />
+    <None Include="Views\User\Index.cshtml" />
+    <None Include="wwwroot\colorlib-regform-18\css\style.css" />
+    <None Include="wwwroot\colorlib-regform-18\css\style.css.map" />
+    <None Include="wwwroot\colorlib-regform-18\css\style.scss" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\css\material-design-iconic-font.css" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\css\material-design-iconic-font.min.css" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.eot" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\muli\Muli-Bold.ttf" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\muli\Muli-Regular.ttf" />
+    <None Include="wwwroot\colorlib-regform-18\fonts\muli\Muli-SemiBold.ttf" />
+    <None Include="wwwroot\colorlib-regform-18\images\bg-registration-form-2.jpg" />
+    <None Include="wwwroot\colorlib-regform-18\images\registration-form-2.jpg" />
+    <None Include="wwwroot\colorlib-regform-18\index.html" />
+    <None Include="wwwroot\colorlib-regform-18\readme.txt" />
+    <None Include="wwwroot\css\KMCC_LOGO_2021.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.27" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.27" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="QRCoder" Version="1.4.2" />
+    <PackageReference Include="Stimulsoft.Reports.Web.NetCore" Version="2020.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.2.9" />
+	  
+	  <!-- Other necessary packages -->
+
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositery\" />
+    <Folder Include="Views\NewFolder\" />
+    <Folder Include="Views\ReportDesigner\" />
+    <Folder Include="wwwroot\qrcodes\" />
+    <Folder Include="wwwroot\Terms\terms\" />
+    <Folder Include="wwwroot\uploads\" />
+    <Folder Include="wwwroot\profile\photo\" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.0" />
+	</ItemGroup>
+	
+</Project>
